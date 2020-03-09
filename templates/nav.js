@@ -7,7 +7,7 @@ document.write('\
         <span class="icon-bar"></span>\
         <span class="icon-bar"></span>\
       </button>\
-      <a class="navbar-brand" href="./index.html">Making Games in C</a>\
+      <a class="navbar-brand" href="/index.html">Making Games in C</a>\
     </div>\
     <div class="collapse navbar-collapse" id="myNavbar">\
       <ul class="nav navbar-nav">\
