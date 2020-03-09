@@ -1,0 +1,59 @@
+ <script src="/templates/head.js"></script>
+<script src="/templates/nav.js"></script>
+
+<div class="container">
+<div class="main-content">
+	<h1>Lesson 0: Setting up, using scanf & writing our first game loop</h1>
+	<p>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/J_Igbh0RH8c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</p>
+	<p>
+		Welcome our first real project & our first game! 
+	</p>
+	<h2>Resources:</h2>
+	<p>
+		<a href="https://github.com/makinggamesinc/text_adventure/blob/1aa497da169af16e3c0f4ff9e98deff71236df56/episode1/main.c#L1">The code for this episode.</a>
+		<br>
+		<a href="https://github.com/makinggamesinc/vcvarsall.bat-locations">Some common locations for the vcvarsall.bat file you need to run in order to run the compiler from the command line.</a>
+		<br>
+		<a href="https://en.wikipedia.org/wiki/Printf_format_string">Some more info on printf</a>
+
+	</p>
+	
+	<h3>Quick Quiz:</h3>
+	<p>What is the function we used to print text in the command prompt & what header file did we have to #include to use it? <a href="#q1" data-toggle="collapse">Click to see</a></p>
+	<div id="q1" class="collapse quiz-answer"><p>
+			The function is printf, and the header file we had to #include was <stdio.h>.
+	</p></div>
+	<p>What is the function we used to get input from the user?<a href="#q2" data-toggle="collapse">Click to see</a></p>
+	<div id="q2" class="collapse quiz-answer"><p>
+			scanf
+	</p></div>
+	<p>What header file did we have to #include to use the boolean data type (written as <b>bool</b> in C & C++)?<a href="#q7" data-toggle="collapse">Click to see</a></p>
+	<div id="q7" class="collapse quiz-answer"><p>
+		<stdbool.h> 
+	</p></div>
+	<p>What was the while loop we used to keep the program going commonly called?<a href="#q3" data-toggle="collapse">Click to see</a></p>
+	<div id="q3" class="collapse quiz-answer"><p>
+			The <b>game loop</b>.
+	</p></div>
+	<p>How do you know when you reach the end of a string in the C language?<a href="#q4" data-toggle="collapse">Click to see</a></p>
+	<div id="q4" class="collapse quiz-answer"><p>
+		You reach the null terminating character '\0'
+	</p></div>
+	<p>What did we have to watch out for when writing our string match function?<a href="#q5" data-toggle="collapse">Click to see</a></p>
+	<div id="q5" class="collapse quiz-answer"><p>
+		That two words could start the same, but be different lengths. For example: "quit" & "quita" are the same for the length of the first word, but our function should return false since they aren't the same.  
+	</p></div>
+
+
+<a href="/projects/text-adventure/lesson1.html"><div class="my-button my-button-inline-left">
+	  		To Next Lesson
+</div></a>
+
+</div>
+
+</div>
+
+</body>
+</html>
