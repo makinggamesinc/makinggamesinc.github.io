@@ -1,0 +1,49 @@
+<script src="/templates/head.js"></script>
+<script src="/templates/nav.js"></script>
+
+<div class="container">
+<div class="main-content">
+	<h1>Lesson 2: Compiling our program</h1>
+	<br/>
+	<p>
+		In this lesson we'll add the <b>entry point function</b> that we learnt about in the first <a href="projects/hello-world/lesson0.html">lesson of this project</a> to our newly created cpp file. Then we will compile it and see the program that's produced. 
+	</p>
+
+	<p>
+		So first we open up the file we created last lesson in our text editor, add copy the <b>entry point function</b> into it, which is:
+	</p>
+	<div class="code-block-left">
+		int main(int argc, char **argv) {
+			<br>
+			&emsp; return 0;
+			<br>
+		}
+	</div>
+	<p>
+		So our file should look something like this: 
+	</p>
+	<img class="example-image" src="/images/main_func.png"/>
+	<p>
+		Now we make sure we save it, then hope over to your command prompt.  Then <b>cd</b> into the directory this file is in. In my case it's in <i>C:\Users\olive\mycode</i>. Once we are in the directory we can now run our compiler. Like we learnt in <a href="/projects/setup/lesson2.html">lesson 2 of setting up</a>, we are going to use the command to run the compiler. 
+	</p>
+	<p>Windows: </p>
+	<div class="code-block-left">
+		cl myFirstFile.cpp
+	</div>
+	<p>Mac: </p> 
+	<div class="code-block-left">
+		gcc myFirstFile.cpp
+	</div>
+	<p></p>
+<a href="/projects/hello-world/lesson1.html"><div class="my-button my-button-inline-left">
+  		To Previous Lesson
+  </div></a>
+<a href="/projects/hello-world/lesson3.html"><div class="my-button my-button-inline-right">
+  		To Next Lesson
+  </div></a>
+
+</div>
+</div>
+
+</body>
+</html>

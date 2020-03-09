@@ -1,0 +1,121 @@
+
+/*
+Colors
+RoseWater: #D8A7B1;
+Spearmint: #B6E2D3;
+Cream: #FAE8E0;
+Hot Pink: #EF7c8E;
+
+*/
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+  font: 20px Roboto, sans-serif;
+  line-height: 1.8;
+  background-image: url("asanoha.png");
+  background-repeat: repeat;
+  color: #43464B;
+}
+
+.info-card {
+	margin: 1em;
+	padding: 1em;
+	background-color: #B6E2D3;
+	border-radius: 0.5cm;
+	text-align: left;
+	color: #43464B;
+}
+
+.photo-card {
+	margin-top: 2em;
+
+}
+
+.main-content {
+	width: 100%;
+	max-width: 80cm;
+	text-align: left;
+	margin: auto;
+	padding: auto;
+}
+
+.my-button {
+	margin: 1em;
+	padding: 1em;
+	background-color: #B6E2D3;
+	border-radius: 0.5cm;
+	color: #43464B;
+}
+
+.my-button-inline-left {
+	float: left;
+	width: 40%;
+}
+.my-button-inline-right {
+	float: right;
+	width: 40%;
+}
+
+.download-link {
+	background-color: #D8A7B1;
+	border-radius: 0.5cm;
+	color: #43464B;
+	padding: 0.4cm;
+	text-align: center;
+}
+
+.important-message {
+	background-color: #D8A7B1;
+	border-radius: 0.5cm;
+	color: #43464B;
+	padding: 0.4cm;
+	text-align: left;
+}
+
+.align-left {
+	text-align: left;
+}
+
+p {
+	padding: 0.4cm;
+}
+
+.code-block {
+	text-align: center;
+	background-color: black;
+	color: yellow;
+	font-family: 'Roboto Mono', monospace;
+	width: 100%;
+}
+
+.code-block-left {
+	text-align: left;
+	padding: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	background-color: black;
+	color: yellow;
+	font-family: 'Roboto Mono', monospace;
+	width: 100%;
+}
+
+.example-image {
+	width: 80%;
+}
+
+.quiz-answer {
+	background-color: #FAE8E0;
+	padding: 0.1em;
+	border-radius: 0.7em;
+}
+
+.lesson-goals {
+	text-align: center;
+}
+
+ol {
+	margin-left: 10%;
+	margin-right: 10%;
+}

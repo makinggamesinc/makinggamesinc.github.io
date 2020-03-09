@@ -1,0 +1,136 @@
+ <script src="/templates/head.js"></script>
+<script src="/templates/nav.js"></script>
+
+<div class="container">
+<div class="main-content">
+	<h1>Lesson 2: Running the command prompt</h1>
+	
+	<p>
+		The command prompt (or terminal on mac) is our gateway to talking to the computer. Instead of using a GUI program (one with buttons & graphics), the command prompt let's us talk to the computer just using text. It's the things you see in hacker movies with text scrolling across the screen, black & white or an eiry green. But rest assured we won't be needing to hack into the pentagon to make our games!  We'll just be using a very simple command that will take our  
+	</p>
+	<p>
+		We'll just be using a very simple command that will take our text files that have our code in & turn them into an executable* that the computer can run. The command line can do a lot of things (everything & more you can do with the GUI), such as create new folders, create files, connect to the internet.
+	</p>
+	<p>
+		Throughout your journey as a programmer, you'll pick up on some useful commands that make life easier for you. But you don't have to become a command line guru to become a great game programmer. 
+	</p>
+	<p>The command we'll be using is:</p>
+		<div class="code-block">
+			cl 
+		</div>
+	<br>
+		<div class="code-block">
+			gcc 
+		</div>
+	<p>
+	So when we open up the command prompt on windows or on mac, terminal, will be greeted by some text & a blinking cursor. Now type the command from above & press enter. By pressing enter your saying to the command prompt - run this command. It will spew out some text, saying your useage isn't correct. This is because it expects to be passed a file to turn into a program. In our case it expects a file ending in .c or .cpp (for C code or C++ code respectively). So our job is to then create a file ending in .cpp (or .c) & run the command again, but this type followed by our file name.
+	</p>
+
+	<p>
+		When we actually compile our file we will want to type the soruce code file name as well. 
+		<br>
+		Windows:
+		<div class="code-block">
+			cl ourFile.cpp
+		</div>
+		Mac & Linux:
+		<div class="code-block">
+			gcc ourFile.cpp
+		</div>
+
+	</p>
+
+	<h3>Instructions:</h3> 
+	<p>
+		To open up the command prompt go to the search bar & type <b>command prompt</b> on Windows or <b>Terminal</b> on Mac.
+	</p>
+	<p>
+		<h3>Windows</h3>
+		<img class="example-image" src="/images/command.png"/>
+		<br>
+		<h3>Mac</h3>
+		<img class="example-image" src="/images/terminal_open.png"/>
+	</p>
+	<p>
+		Once open you'll be greeted by a window with a blinking cursor. 
+	</p>
+	<p>
+		<h3>Windows</h3>
+		<img class="example-image" src="/images/cmd_open.png"/>
+		<p><i>What the <b>command prompt</b> looks like on Windows.</i></p>
+		<br>
+		<h3>Mac</h3>
+		<img class="example-image" src="/images/terminal1.png"/>
+		<p><i>What the <b>Terminal</b> looks like on Mac.</i></p>
+	</p>
+	<p>
+		If you then type the command from above you'll get an error message.
+	</p>
+	<p>
+		<h3>Windows</h3>
+		On Windows you'll notice it doesn't recongise what <b>cl</b> means. This is because you need to do one extra step to get it working. This is a bit of an inconvienance, but <b>you only have to do it once on opening the command prompt</b>. From then on it will understand what <b>cl</b> means.  
+		<br>
+		<div>
+		<img class="example-image" src="/images/cmd_cl_not_there.png"/>
+		</div>
+		To get it working you have to run the <b>vcvarsall.bat</b> file. You don't have to understand what this is by any means, you just have to run it to get access to the <b>compiler</b>. It's located in a different place depending on what version of Visual Studio you have. On the 2017 version you just copy this in and press enter:
+		<div class="code-block">"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64</div>
+		<p>
+			If you're using a different version, the line you copy in will be slightly different. The best thing to do is google your year version of Visual Studio with <b>vcvarsall.bat</b>. Hopefully you'll find an answer, if not pop over to the discord channel & ask for some help. 
+		</p>
+		<hr>
+		<img class="example-image" src="/images/cmd_run_script.png"/>
+		<p>On running the vcvarsall.bat file, you'll see this message.</p>
+		<img class="example-image" src="/images/cmd_no_file.png"/>
+		<p>Now when we run our <b>cl</b> command, we should see this message.</p>
+		<br>
+		<h3>Mac</h3>
+		<p>Typing the command <b>gcc</b> in.</p>
+		<img class="example-image" src="/images/terminal_gcc.png"/>
+		<p>After we press enter, we'll see this message. </p>
+		<img class="example-image" src="/images/terminal_nofiles.png"/>
+		<p>This is saying it needs a file to convert to an executable*. This is the next step to getting a program up & running.</p>
+	</p>
+		
+	<p>Phew! That was a big step, but well done. We now know what the command line is, and can run our compiler from it. Although this seems a lot at the moment, once we get into writing some programs, the process will become clearer & it will be a piece of cake. In the next <a href="/projects/hello-world.html">project</a>  we will actually write some real C++ code, & then compile it using the steps we outlined above.</p>
+
+	<p>
+		* - an executable is computer talk for a file that the computer is able to understand (i.e. machine code) & therefore execute what's inside it.  
+	</p>
+
+	<h3>Quick Quiz:</h3>
+	<p>What is the command line called on Windows & Mac? <a href="#q1" data-toggle="collapse">Click to see</a></p>
+	<div id="q1" class="collapse quiz-answer"><p>
+			Windows: Command Prompt
+			Mac: Terminal
+	</p></div>
+	<p>What is the command on Windows & Mac to run the compiler? <a href="#q2" data-toggle="collapse">Click to see</a></p>
+	<div id="q2" class="collapse quiz-answer"><p>
+			Windows: <span class="code-block">cl</span>
+			<br>
+			Mac: <span class="code-block">gcc</span>
+	</p></div>
+	<p>On Windows, what extra step do you have to do to run the compiler from the command line? <a href="#q3" data-toggle="collapse">Click to see</a></p>
+	<div id="q3" class="collapse quiz-answer"><p>
+			You have to run the <b>vcvarsall.bat</b> file, which is located in different locations depending on your Visual Studio year version.
+			For 2017 it is:
+			<div class="code-block">"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64</div>  
+	</p></div>
+	<p>What extra bit of information do we have to tell the compiler, in order for it to actually make an executable? <a href="#q4" data-toggle="collapse">Click to see</a></p>
+	<div id="q4" class="collapse quiz-answer"><p>
+			The file name of the code you want to compile. 
+	</p></div>
+
+<a href="/projects/setup/lesson1.html"><div class="my-button my-button-inline-left">
+	  		To Previous Lesson
+	  </div></a>
+<a href="/projects/hello-world.html"><div class="my-button my-button-inline-right">
+  		To Next Project
+  </div></a>
+
+</div>
+
+</div>
+
+</body>
+</html>

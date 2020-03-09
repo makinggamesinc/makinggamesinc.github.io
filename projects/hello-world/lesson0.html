@@ -1,0 +1,78 @@
+<script src="/templates/head.js"></script>
+<script src="/templates/nav.js"></script>
+
+<div class="container">
+<div class="main-content">
+	<h1>Lesson 0: Writing the <b>entry point</b> to our program</h1>
+	<br/>
+	<p>In this lesson we introduce the entry point to our program, a function that appears in all programs, even the web browser your reading this in would have one.  It is where the program starts, like a book you read starts at the first page, a program always starts at the entry point.</p>
+	<p>In C/C++ and many other languages, the entry point is defined by a special function called the <b>main</b> function. If you try and compile your program & is doesn't have this special function, there will be an error saying <b>no main function defined</b>. This is the compiler saying 'I don't know where this program starts'.</p>
+
+	<p>Before we go any further, what is a function? Programs are built up by two different building blocks: <b>functions</b> & <b>variables</b>. <b>Functions</b> are the <b>verbs</b> of the program whereas <b>variables</b> are the <b>nouns</b>. The best way to develop a sense of what a function is, is to start using them. Just to get an overview, you can think of them as some <b>process</b> that takes in some information, does some stuff, and returns some information (although it doesn't have to do either of this things, if you don't want it to & other parts of your program aren't relying on it).</p>
+
+	<p>Let's have a look at the main function. When we write it in code it looks like this:</p>
+	<div class="code-block-left">
+		int main(int argc, char **argv) {
+			<br>
+			&emsp; return 0;
+			<br>
+		}
+	</div>
+
+	<p>This may look very obscure, and there is quite a bit packed into this, but not to worry, for now you just have to understand we put this at the start of our programs. To explain it a bit more, the <b>name</b> of the function is <b>main</b>, and the <b>int</b> to the left of <b>main</b> is the return type. This means the function is returning an integer (a positive or negative whole number i.e. no fractions). It is up us to choose what that number is, but it has to be a number (not a word or a fractional number). To the right of <b>main</b> in the parentheses, these are the input information. It says no matter who calls this function, it's guranteed to come with this information. So again let's disect this. The first bit of information (or <b>variable</b>) before the comma:
+	</p>
+	<div class="code-block-left">
+		int argc
+	</div>
+	<p>the type is in integer (abbreviated as int) and we can refer to it by it's name <b>argc</b> in our code.</p>
+	The second bit of information (or <b>variable</b>) after the comma:
+		</p>
+		<div class="code-block-left">
+			char **argv
+		</div>
+	<p>the type is a <b>char **</b> (this is a pretty compilcated type & we don't need to understand it at the moment) and we can refer to it by it's name <b>argv</b> in our code.</p>
+	<p>
+		Then the end parentheses says 'that's the end of the input variables', and the bracket means 'whatever is after this bracket, & before the end bracket contains the code of our function'. It's like defining a paragraph in a story. It helps the book (or program) easier to understand, and groups similar ideas together. In this case, it's grouping our whole program together. 
+	</p>
+	<p>
+		At the end of our function, just before the end bracket, there is a line of code:</p>
+		<div class="code-block-left">
+			return 0;
+		</div>
+	<p>
+		This is us fufilling our promise that we were going to give back (or <b>return</b>) an <b>int</b> (integer) at the end of our function. In this case we returning 0. We could have returned 7 or 10, but in this case the number means was everything alright? And if we return zero, whoever reads it will know everything went smoothly.  If we didn't add this line, our compiler would issue an error, knowing that it expects an integer, but there isn't one being returned.  
+	</p>
+
+	<p>
+		But again for now, we just have to copy and paste this at the start of our source code (which we'll do in <a href="/projects/hello-world/lesson2.html">lesson 2</a>). In the next lesson we'll go over some simpler functions to get a better grasp on functions.</p>
+	</p>
+
+	<h3>Quick Quiz:</h3>
+	<p>What is the entry point to a program called? <a href="#q1" data-toggle="collapse">Click to see</a></p>
+	<div id="q1" class="collapse quiz-answer"><p>
+			the <b>main</b> function
+	</p></div>
+	<p>What are the two building blocks of a program? <a href="#q0" data-toggle="collapse">Click to see</a></p>
+	<div id="q0" class="collapse quiz-answer"><p>
+		Functions & Variables	
+	</p></div>
+	<p>What is the code for the main function? <a href="#q2" data-toggle="collapse">Click to see</a></p>
+	<div id="q2" class="collapse quiz-answer"><p>
+			<div class="code-block-left">
+					int main(int argc, char **argv) {
+						<br>
+						&emsp; return 0;
+						<br>
+					}
+				</div>
+	</p></div>
+
+<a href="/projects/hello-world/lesson1.html"><div class="my-button my-button-inline-right">
+  		To Next Lesson
+  </div></a>
+
+</div>
+</div>
+
+</body>
+</html>

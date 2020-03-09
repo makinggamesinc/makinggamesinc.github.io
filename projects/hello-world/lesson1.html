@@ -1,0 +1,185 @@
+<script src="/templates/head.js"></script>
+<script src="/templates/nav.js"></script>
+
+<div class="container">
+<div class="main-content">
+	<h1>Lesson 1: Using the command line & creating our first c++ file</h1>
+	<br/>
+	<p>
+		In the previous lesson we learnt what the main function was, and what it looks like in code. In this lesson we are going to create a new file for our code, write our main function in there, and <b>compile</b> it.
+
+		A source code file in C++ has the extension <b>.cpp</b>, just a text file has the extension <b>.txt</b> or a song has the extension <b>.mp3</b>. There's nothing special about a <b>.cpp</b> file, it's just text, it can't even store fonts or font size, it just stores the text characters. So to create one we can open up our trusty command line. If you don't remember how to do this go to <a href="/projects/setup/lesson2.html">Lesson 2 in Setup</a>.
+	</p>
+	<p>
+		Once it's open we're going to create a folder where we want to write our programs. To do this we're going to learn some new command line commands. 
+	</p>
+	<p>
+		1. Firstly decide where you want to store your programs, this might be in <i>Documents</i> or on the <i>Desktop</i>. Where ever you choose we need to know the <b>root</b> address of it i.e. where it exists on the computer. For example my <i>Documents</i> folder exists at <i>C:\Users\olive\Documents</i>. So its on the <i>C:</i> drive (then the back slash means go to the next folder), then in the <i>Users</i> folder, go into <i>olive</i> folder, then in that folder you'll find Documents. 
+		</p>
+		<p>		
+		On Mac it's a slightly different setup, your documents will be at <i>~/Documents</i>. This special swiggly character (tilde character) means your user folder. Other folders like <i>Desktop, Applications, Downloads</i> will also be in here.
+		<div class="important-message">
+			You'll see the slashes are different depending if your on Windows or Mac. Windows uses a backslash \ , whereas Mac uses a forward slash /. This can become important when dealing with folder names or running your program from the command line. 
+		</div>
+	</p>
+
+	<p>
+		2. The next step is using the <b>cd</b> command. This is without a doubt the most useful command to know. It's an abbreviation of <b>change directory</b>. Basically the command line is <b>always</b> at some directory. For example when you start it up, it most likely will start in your User directory. You can always see what directory you're in based on what is written next to your cursor. 
+	</p>
+	<p>Windows:</p>
+	<img class="example-image" src="/images/command_win_dir.png"/>
+	<p>Mac: (Mac is a bit harder to see, it's inbetween the words)</p>
+	<img class="example-image" src="/images/command_mac_dir.png"/>
+	<p>
+		Now when we type in:
+	</p>
+	<div class="code-block-left">
+		cd
+	</div>
+	<p>
+		And press Enter, nothing will happen, that's because <b>cd</b> needs to know where you want to go. This is perfect for us to now say where we want to create the folder to store our code. I want to store it in <i>Documents</i>, so I'm going to type:
+	</p>
+	<p>On Windows:</p>
+	<div class="code-block-left">
+		cd C:\Users\olive\Documents
+	</div>
+	<p>On Mac:</p>
+	<div class="code-block-left">
+		cd ~/Documents
+	</div>
+	<p>
+		Then when we press Enter, and look at where we are at now, we'll see we've changed our location: 
+	</p>
+	<p>Windows:</p>
+	<img class="example-image" src="/images/cmd_win_cd_pos.png"/>
+	<p>Mac:</p>
+	<p><img class="example-image" src="/images/no_image.png"/></p>
+	<br>
+	<div class="important-message">
+	<p>
+		There are some other useful shorthands with cd. One is:
+	</p>
+		<div class="code-block-left">
+		cd ..
+	</div>
+	<p>
+		This is shorthand to <b>go up one folder</b>.
+		We're saying 'change the directory to the folder above. When we press Enter now, we'll see the directory we're in change. 
+	</p>
+	<p>Windows:</p>
+	<img class="example-image" src="/images/win_cmd_cd.png"/>
+	<p>Mac:</p>
+	<img class="example-image" src="/images/no_image.png"/>
+	</div>
+	<p>
+		3. Now that we can change to a directory of our choosing, we are ready to create the folder that will store how code. To do this we have to use a new command in the command line. It is: 
+	</p>
+	<div class="code-block-left">
+		mkdir
+	</div>
+	<p>
+		This command <b>makes a directory</b>. Like <b>cd</b> we have to give it another bit of information. In this case it's the name we want to call it. I'm going to call it myCode. So if we type and press Enter:
+	</p>
+	<div class="code-block-left">
+		mkdir mycode
+	</div>
+	<p>
+	We will create a folder where our command line was at. In my case it was in <i>C:\Users\olive\Documents</i> on Windows & <i>~/Documents</i> on mac.
+	</p>
+	<p>Windows: </p>
+	<img class="example-image" src="/images/mkdir_mycode.png"/>
+	<p>Mac: </p>
+	<img class="example-image" src="/images/no_image.png"/>
+	
+	<p>
+	Now if we go have a look in <i>Documents</i>, we'll find our new folder <b>mycode</b>. 
+	</p>
+	<p>Windows: </p>
+	<img class="example-image" src="/images/explorer_mycode.png"/>
+	<p>Mac: </p>
+	<img class="example-image" src="/images/no_image.png"/>
+	<p>
+		Ok, nearly there! Now we can use our <b>cd</b> command to change directory into our newly created folder.  
+	<div class="code-block-left">
+		cd mycode
+	</div>
+	</p>
+	<div class="important-message">
+		<p>
+		We can only do <b>mycode</b> if the we are in the folder above <b>mcode</b>, that is we are in <i>C:\Users\olive\Documents</i>. If we aren't it will say that folder doesn't exist. 
+		</p>
+		<p>
+			We can however use the <b>root address</b> of the folder no matter where we are located on the command line, that is we type:
+		</p>
+		<p>On Windows: </p>
+		<div class="code-block-left">
+			cd C:\Users\olive\Documents/mycode
+		</div>
+		<p>On Mac:</p>
+		<div class="code-block-left">
+			cd ~/Documents/mycode
+		</div>
+	</div>
+	<br>
+	<p>
+		You'll see we now moved into the <b>mycode</b> folder on the commmand line. 
+		<br>	
+	Windows:</p>
+	<img class="example-image" src="/images/in_mycode_win32.png"/>
+	<p>Mac:</p>	
+	<img class="example-image" src="/images/no_image.png"/>
+	<p>
+		Yay! Now that we're in our folder we want our code to live in, we are ready to create our first <b>.cpp</b> file. That is, a file that we will right our c++ code in. We can do this from the command line, but we can accidently overwrite files that are already there. So it's much safer to do in the text editor we are using. To do this in Sublime text, just go <i>File</i> -> <i>New File</i>, and save it in the folder we've just created. Find out how to do this in the text editor your using. 
+	</p>
+	<p>
+		And now if we have a look in the file explorer in the <b>mycode</b> folder, we'll see our first file is there. 
+	</p>
+	<img class="example-image" src="/images/explorer_win32_newFile.png"/>
+	<p>
+		Awesome! We created our first .cpp file, learnt how to create folders from the command line using <b>mkdir</b>, that the command line is <b>always</b> located at some directory, & navigate around the computer on the command line using the <b>cd</b> command. Now that we've created our file, we can actually start writing some code into it. In the <a href="/projects/hello-world/lesson2.html">next lesson</a> we'll add out <a href="/projects/hello-world/lesson0.html"><b>entry point function</b></a> in & then compile it, turning it into a real computer program. 
+	</p>
+
+	<h3>Quick Quiz:</h3>
+	<p>What file extension does a C++ file have? <a href="#q0" data-toggle="collapse">Click to see</a></p>
+	<div id="q0" class="collapse quiz-answer"><p>
+			cpp
+	</p></div>
+	<p>What slash do file names on Windows use? What slash do file names on Mac use? <a href="#q1" data-toggle="collapse">Click to see</a></p>
+	<div id="q1" class="collapse quiz-answer"><p>
+		<p>
+			Windows uses back slashes \
+		</p>
+		<p>
+			Mac uses forward slashes /
+		</p>
+	</p></div>
+	<p>What is the command to change the directory the command line is currently located at? <a href="#q5" data-toggle="collapse">Click to see</a></p>
+	<div id="q5" class="collapse quiz-answer"><p>
+		cd
+	</p></div>
+	<p>What is the full command to go up one directory on the command line? <a href="#q2" data-toggle="collapse">Click to see</a></p>
+	<div id="q2" class="collapse quiz-answer"><p>
+			cd ..
+	</p></div>
+	<p>What is the command to create a folder on the command line? <a href="#q3" data-toggle="collapse">Click to see</a></p>
+	<div id="q3" class="collapse quiz-answer"><p>
+			mkdir
+	</p></div>
+	<p>What other bit of information does this command require to work? <a href="#q4" data-toggle="collapse">Click to see</a></p>
+	<div id="q4" class="collapse quiz-answer"><p>
+			The name of the folder you want to make.
+			eg. mkdir myNewFolder 
+	</p></div>
+
+<a href="/projects/hello-world/lesson0.html"><div class="my-button my-button-inline-left">
+  		To Previous Lesson
+  </div></a>
+<a href="/projects/hello-world/lesson2.html"><div class="my-button my-button-inline-right">
+  		To Next Lesson
+  </div></a>
+
+</div>
+</div>
+
+</body>
+</html>
