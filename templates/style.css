@@ -115,6 +115,10 @@ p {
 	text-align: center;
 }
 
+.align-center {
+	text-align: center;
+}
+
 ol {
 	margin-left: 10%;
 	margin-right: 10%;
