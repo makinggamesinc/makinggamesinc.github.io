@@ -1,0 +1,197 @@
+ <script src="/templates/head.js"></script>
+<script src="/templates/nav.js"></script>
+
+<div class="container">
+<div class="main-content">
+	<h1>Text Adventure: Lesson 2</h1>
+	<h2>Replacing scanf with fgets, write a 'remove newline character' function & start creating rooms</h2>
+	<p>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/7dYKhiruW1M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</p>
+	<h2>Resources:</h2>
+	<p>
+		<a href="https://github.com/makinggamesinc/text_adventure/blob/master/episode%202/main.c">The code for this episode.</a>
+		<br>
+		<a href="https://www.tutorialspoint.com/c_standard_library/c_function_fgets.htm">More on the fgets function</a>
+
+	</p>
+	<p>We start the episode by replacing the <b>scanf</b> function with the <b>fgets</b> function. The reason for this is, with scanf, we can't specify the length of the array we're passing in. That means the function has no idea how long our array is, and if the user types more characters then the array holds, it will write over memory that wasn't the array. This kind of bug is called <b>buffer overflow</b> & can be quite nasty when we can't track down what's causing it.
+	</p>
+	<div class="code-block-left">
+		char response[2];
+	</div>
+	<p>
+		Here we've put an array of <b>char</b> types on the stack. This means there are two spots in this array to store two characters. 
+	</p>
+	<p>But we can quite easily do this in C code.</p>
+	<div class="code-block-left">
+		response[3] = 'a';
+	</div>
+	<p>
+		Here were assigning spot 4 (remember it includes 0) to equal the character type <b>'a'</b>. But our array can only store 2 spots: index 0 & 1. This is an <b>array index out of bounds</b> or a <b>buffer overflow</b>. So without <b>scanf</b> knowing the size of our array, it has no idea when it would be writing past the size of the array, which could easily happen if the user types a lot of text. This is the reason we want to use <b>fgets</b>.
+	</p>
+	<div class="code-block-left">
+		char bufferToFillOut[64];
+		fgets(bufferToFillOut, 64, stdin);
+	</div>
+	<p>
+		Here you see were now passing the buffer to be filled out (like with scanf), but also the <b>size of that buffer</b>.
+	</p>
+	<p>
+		One quirk of fgets is that it adds a newline character at the end of the array. So our string in memory instead of looking like this: (where each [a] square bracket defines a seperate element in our array)
+	</p>
+	<div class="code-block-left">
+		[h][e][l][l][o][\0]
+	</div>
+	<p>It will look like this:</p>
+	<div class="code-block-left">
+		[h][e][l][l][o][\n][\0]
+	</div>
+	<p>
+		First you'll notice the <b>null terminator</b> at the end of the string that defines the end of the string. But the other thing you'll notice there is an extra <b>'\n'</b> character, the <b>newline</b> character at the end. This wouldn't be a problem if it didn't break our string match function. 
+	</p>
+	<h2>Why the string match function broke.</h2>
+	<p>
+		In order to quit our program we try & match the string "quit" with the respose the user types. Previously with scanf our function matched correctly, however now it no longer works. The reason is this pesky newline character fgets has put at the end of user's response.
+	</p>
+	<div class="code-block-left">
+		string trying to match against: [q][u][i][t][\0]
+		<br>
+		user string they typed in:&emsp;&emsp; &emsp;[q][u][i][t][\n][\0]
+	</div>
+	<p>
+		So when our function tries and match the string, it will say the string is equal up until we test the length of the strings are equal. And we find the user's reponse is longer, so rightly so, our function says the strings aren't equal. So our first mission is to remove the pesky newline character from the response string. 
+	</p>
+	<p>
+		To do this we're going to loop through and find the newline character we're looking for i.e. the one at the end of the string. We can identify it by seeing if it is followed by the null terminator character. So our function will look something like this: 
+	</p>
+	<div class="code-block-left">
+		void <span class="code-function-name">removeNewlineCharacter</span>(<span class="code-variable-name">char *</span>ourString) {
+		    <br>
+		    &emsp;&emsp;&emsp;&emsp;<span class="code-comment-name">//NOTE: Loop through our whole string</span>
+		    <br>
+			&emsp;&emsp;&emsp;&emsp;while(*ourString != '\0') {
+			<br>
+			 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="code-comment-name">//NOTE: Look for the newline character at the end of the string</span>
+			 <br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;if(ourString[0] == '\n' && ourString[1] == '\0') {
+					<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="code-comment-name">//NOTE:  When we find the newline character, replace it with the null terminating character</span>
+					<br>
+						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ourString[0] = '\0';
+						<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;}
+<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="code-comment-name">//NOTE:  Advance our string each time in our while loop</span>
+					<br>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ourString++;
+					<br>
+			&emsp;&emsp;&emsp;&emsp;}
+		<br>
+		}
+	</div>
+	<p>
+		We loop through our string looking for the newline character next to the null terminating character. When we find it, we replace the newline character with another null terminating character. So our sting will now look like this: 
+	</p>
+	<div class="code-block-left">
+		[q][u][i][t][\0][\0]
+	</div>
+	<h2>Adding a Room data structure</h2>
+	<p>
+		Now that we've got the basic structure of our program working, we're going to start adding some rooms to our game. The basic idea is that a player finds herself in one room at a time. In each room there will be an assortment of items, humans or monsters. We can then move to a different room that is attached to the room we're in.  
+	</p>
+	<p>
+		To get started we'll add a room struct to store all the data we need for each room.
+	</p>
+	<div class="code-block-left">
+		typedef struct {
+		<br>
+		&emsp;&emsp;char *name;
+		<br>
+		&emsp;&emsp;char *description;
+		<br>
+		<br>
+		&emsp;&emsp;int entityCount;
+		<br>
+		&emsp;&emsp;Entity entities[256];
+		<br>
+		} <span class="code-variable-name">Room</span>;
+	</div>
+	<p>
+		A room will have a string (char *) called name, a string for it's description & an array of entities.  Here we're just describing an entity as either a human, monster or item. Each entity will have some data that describes it. So lets do that next and create our entity type.
+	</p>
+	<div class="code-block-left">
+		typedef struct {
+		<br>
+		&emsp;&emsp;char *name;
+		<br>
+		&emsp;&emsp;char *description;
+		<br>
+		<br>
+		&emsp;&emsp;EntityType type;
+		<br>
+		} <span class="code-variable-name">Entity</span>;
+	</div>
+	<p>
+		In our next structure we've created our entity type. For now it'll just have a name, description & type. Where the type will be a MONSTER, HUMAN or ITEM. This allows us to right game logic that will handle the different types. For example, you might only be able to 'talk' to humans, 'attack' monsters & 'take' items. The final thing to make this compile now is to add our 'EntityType' type. So let's do that.
+	</p>
+	<div class="code-block-left">
+		typedef enum {
+		<br>
+		&emsp;&emsp;MONSTER,
+		<br>
+		&emsp;&emsp;HUMAN,
+		<br>
+		&emsp;&emsp;ITEM
+		<br>
+		} <span class="code-variable-name">EntityType</span>;
+	</div>
+	<p>
+		Here we've create an enumurator that just lists the different types of entities. This is the main way of using enum's, list different types, then when you are in the code you can test which type you have, & run the correct game logic for it. For example:
+	</p>
+	<div class="code-block-left">
+		if(<span class="code-variable-name">entity.type</span> == MONSTER) {
+		<br>
+		&emsp;&emsp;runMonsterLogic();
+		<br>
+		}
+		<br>
+		if(<span class="code-variable-name">entity.type</span> == HUMAN) {
+		<br>
+		&emsp;&emsp;runHumanLogic();
+		<br>
+		}
+		<br>
+		if(<span class="code-variable-name">entity.type</span> == ITEM) {
+		<br>
+		&emsp;&emsp;runItemLogic();
+		<br>
+		}
+		<br>
+	</div>
+	<br>
+	<div class="important-message">
+		It's important to know in C and C++, when you use something like a function or data structure, it has to be declared <b>above</b> where your trying to use it. For example to use the type <b>Entity</b> in the <b>Room</b> struct, the <b>Entity</b> struct has to be declared <b>above</b> the <b>Room</b> struct. This is also the reason why there are <b>header</b> files (.h) and <b>code</b> files (.c or .cpp), which helps arrange your code so all code can reference all other code in your program. 
+	</div>
+	<p>
+		That comes to the end of this lesson. In the next lesson we'll keep going with our room creation, adding entities to them, add the logic to be able to interact with the entities, and be able to move between rooms.  See you then!
+	</p>
+	<h3>Quick Quiz:</h3>
+	<p>Why did we have to swap the scanf function to the fgets function?<a href="#q1" data-toggle="collapse">Click to see</a></p>
+	<div id="q1" class="collapse quiz-answer"><p>
+			The fgets function is more memory safe since it knows how long the array is.
+	</p></div>
+
+<a href="/projects/text-adventure/lesson1.html"><div class="my-button my-button-inline-left">
+	  		To Previous Lesson
+</div></a>
+<a href="/projects/text-adventure/lesson3.html"><div class="my-button my-button-inline-left">
+	  		To Next Lesson
+</div></a>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -123,3 +123,13 @@ ol {
 	margin-left: 10%;
 	margin-right: 10%;
 }
+
+.code-function-name {
+	color: red;
+}
+.code-variable-name {
+	color: green;
+}
+.code-comment-name {
+	color: gray;
+}
