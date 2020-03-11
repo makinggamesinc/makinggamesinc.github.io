@@ -8,9 +8,6 @@
 	<p>
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/J_Igbh0RH8c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</p>
-	<p>
-		Welcome our first real project & our first game! 
-	</p>
 	<h2>Resources:</h2>
 	<p>
 		<a href="https://github.com/makinggamesinc/text_adventure/blob/1aa497da169af16e3c0f4ff9e98deff71236df56/episode1/main.c#L1">The code for this episode.</a>
@@ -20,6 +17,40 @@
 		<a href="https://en.wikipedia.org/wiki/Printf_format_string">Some more info on printf</a>
 
 	</p>
+	<p>
+		Welcome our first real project & our first game! Let's dive straight in. We're going to start by adding our <b>main entry point</b> to our program. As <a href="/projects/hello-world/lessson0.html">we know</a> it looks like this: 
+	</p>
+	<div class="code-block-left">
+		int main(char **args, int argc) {
+		<br>
+		}
+	</div>
+	<p>
+		This is where our program starts running. We then use the <b>printf</b> function to output our first prompt to the user:
+	</p>
+	<div class="code-block-left">
+		printf("What do you do?\n");
+	</div>
+	<p>
+		As you can see, we're adding the newline character '\n' at the end, so the text looks nicer. The next function we are going to use is the <b>scanf</b> function. This is the opposite of printf, instead of outputting text to the command line, it's going to read in text from the command line. This allows us to read in what the user wants to do. This might be: 'take potion', 'attack wolf' or 'quit'. In order to use the <b>scanf</b> function we need to pass in a char array to be filled in. Remember, <b>char</b> arrays are the equavilant of Strings in C. Just a list of characters. So we create an array of characters on the <b>stack</b> that will store our user's response. 
+	</p>
+	<div class="code-block-left">
+		char userResponse[256]; 
+	</div>
+	<p>
+		Note since we are declaring it on the <b>stack</b>, we don't have to <b>allocate</b> it. Now that we have it, we can pass it to <b>scanf</b> to fill out. 
+	</p>
+	<div class="code-block-left">
+		scanf(userResponse); 
+	</div>
+	<p>
+		Now when scanf is hit in the code. It will pause the program and allow the user to type in their response. Once they do & press ENTER, the program will carry on. We can even see what the user wrote by printing out the array to the command line.
+	</p>
+	<div class="code-block-left">
+		printf("%s\n", userResponse); 
+	</div>
+
+
 	
 	<h3>Quick Quiz:</h3>
 	<p>What is the function we used to print text in the command prompt & what header file did we have to #include to use it? <a href="#q1" data-toggle="collapse">Click to see</a></p>
