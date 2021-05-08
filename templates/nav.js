@@ -7,13 +7,14 @@ document.write('\
         <span class="icon-bar"></span>\
         <span class="icon-bar"></span>\
       </button>\
-      <a class="navbar-brand" href="/index.html">Making Games in C</a>\
+      <a class="navbar-brand" href="/index.html">Games & Engines</a>\
     </div>\
     <div class="collapse navbar-collapse" id="myNavbar">\
       <ul class="nav navbar-nav">\
         <li><a href="/projects.html">Projects</a></li>\
-        <li><a href="/projects.html">Interviews</a></li>\
-        <li><a href="/projects.html">Find a topic</a></li>\
+        <li><a href="/game-design.html">Game Design</a></li>\
+        <li><a href="/games.html">Games</a></li>\
+        <li><a href="/find-topic.html">Find a topic</a></li>\
       </ul>\
     </div>\
   </div>\

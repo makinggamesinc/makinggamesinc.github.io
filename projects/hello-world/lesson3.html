@@ -11,23 +11,110 @@
 	</p>
 
 	<p>
-		As we learnt in the last lesson, functions have a name, input variables, <b>only one or no ouput variables</b>, and the actual code (or the body of the function, where the actual code goes). Here is an example of a function: 
+		As we learnt in the last lesson, functions have a name, input variables, <b>only one or no ouput variables</b>, and the actual code (or the body of the function, where the actual code goes). Here is an example of a function: </p>
 		<div class="code-block-left">
-			int rabbitEatCarrots(int numberOfCarrots) {
+			int rabbitEatCarrots(int numberOfCarrots, int totalCarrots) {
 			<br>
-			&emsp;totalCarrots = totalCarrots - numberOfCarrots;
+			&emsp;int leftOverCarrots = totalCarrots - numberOfCarrots;
 			<br>
-			&emsp;return totalCarrots;
+			&emsp;return leftOverCarrots;
 			<br>
 			}
-		</div>  
+		</div> 
+		<br> 
+		<p>
+		Here our function is doing something, in this case telling the rabbit to eat carrots. Functions are the verbs of our program, they do stuff for us. Variables on the other hand are the nouns of our program. They represent things. We give them to functions to do things on them.</p>
+		<p>In this example we're passing <b>into</b> the function the number of carrots we want the rabbit to eat. Int being the type of the variable - which is an Integer (a negative or positive whole number).  On the left hand side of <i>rabbitEatCarrots(</i> we're also saying this function must return something for us. Meaning in our function body we must use the keyword <b>return</b> followed by an integer variable. In this case we're returning the total number of carrots.  
 	</p>
-	
+	<p>
+		Once we declare what's expected to come in (the input variables) and what's expected to come out (the output variables), we can actually write what this function is going to do, in this case eat some carrots. You can see we're creating a new variable called <i>leftOverCarrots</i>. And the value of this variable will be the sum that we calculate on the right - the total number of carrots minus the carrots we want to eat. 
+	</p>
+	<p>
+		We're then returning this result back out of the function so it can be used by function that called this function or the <b>outer scope</b>. This could look like this:
+	</p>
+	<div class="code-block-left">
+		void main(void) {
+		<br>
+		&emsp;int carrotCount = 10;
+		<br>
+		&emsp;carrotCount = rabbitEatCarrots(2, carrotCount); 
+		<br>
+		&emsp;print(carrotCount);
+		<br>
+		}
+	</div>
+	<p>
+		Here is our outer function that has it's own <b>function declaration</b> - <i>void main(void)</i>. This is saying the function is called <i>main</i> and it doesn't have any input <i>or</i> output variables, denoted by <b>void</b>. It's then creating a variable of type <i>int</i> (a number) called carrot count, and making it equal 10. This represents the starting number of carrots the rabbit has.  
+	</p>
+	<p>
+		It then calls our <i>rabbitEatCarrots</i> function passing in the two input variables it needs - the number of carrots that are being eaten and the total number of carrots the rabbit has. When the program gets to this point, it will enter the rabbitEatCarrots function, calculate the number of carrots that are left, and return the value, assigning the new value to carrot count.
+	</p>
+	<p>
+		We can then see what this value is by calling another function <b>print</b> which would output our final value which would be 8.  
+	</p>
+	<p>
+		You can see in this example that a program moves from top to bottom inside a function. Just like we read from left to right, top to down in the English language, a program will move from top to bottom in a function. If it reaches a function, our program will enter that, start from the top and go till the bottom, then will jump back to where it was on the function it was in orignially. 
+	</p>
+	<p> A program is built up of functions that operate on variables. When we run our program, it enters in at the entry point and moves from top to bottom of functions, entering and exiting other functions as they are called, until it gets to the end and exits. This is what all computer programs do, and games are built. 
+	</p>
+	<hr>
+	<p>Let's write this now in a c program like we've learnt in previous lessons.</p>
+	<div class="code-block-left">
+		int main(int argc, char **argv) {
+			<br>
+			//code will go here
+			<br>
+			&emsp; return 0;
+			<br>
+		}
+	</div>
+	<p>We've got our entry point to the program like we've done before. Next we're going to add our code for the rabbit's carrots.</p>
+	<div class="code-block-left">
+		int main(int argc, char **argv) {
+			<br>
+			&emsp;int carrotCount = 10;
+			<br>
+			&emsp;carrotCount = rabbitEatCarrots(2, carrotCount); 
+			<br>
+			&emsp;printf("%d", carrotCount);
+			<br>
+			&emsp;return 0;
+			<br>
+		}
+	</div>
+	<br>
+	<img class="example-image" src="/images/rabbitsExample.png">
+	<p><i>What the code would look like in our text editor.</i></p>
+	<br>
+	<p>
+		Now if we compile this with our <b>cl</b> command we'll get an error. 
+	</p>
+	<br>
+	<img class="example-image" src="/images/rabbitsExample_error.png">
+	<p>
+		It says it can't find the function <i>rabbitEatCarrots</i>. Why would that be? It's because we haven't made it. We're saying use this function, the compiler then looks for it but can't find it. We have to write it. 
+	</p>
+	<br>
+	<img class="example-image" src="/images/rabbitsExample1.png">
+	<br>
+	<p>
+		Once we add it <b>above</b> the main function, it should look like this. 
+	</p>
+	<p>We can then compile it using our cl command again - <i>cl main.c</i> and it should compile. We can then run our command by running the .exe the compiler created for us - <i>main.exe</i></p>
+	<img class="example-image" src="/images/rabbitsOutput.png">
+	<br>
+	<br>
+	<img class="example-image" src="/images/rabbitsRunExe.png">
+	<p><i>Running our program</i></p>
+	<p>One we press enter our program will run, executing the code we've written.
+	<img class="example-image" src="/images/rabbitsRunExeResult.png">
+	<p>As you can see it output <i>8</i> - how many carrots were left after the rabbit ate 2.</p>
+	<p>Awesome! We created a program that ran real code and had more than one function in it. We're one our way to making a gam engine!</p>
 
-<a href="/projects/hello-world/lesson1.html"><div class="my-button my-button-inline-left">
+<a href="/projects/hello-world/lesson2.html"><div class="my-button my-button-inline-left">
   		To Previous Lesson
   </div></a>
-<a href="/projects/hello-world/lesson3.html"><div class="my-button my-button-inline-right">
+<a href="/projects/hello-world/lesson4.html"><div class="my-button my-button-inline-right">
   		To Next Lesson
   </div></a>
 

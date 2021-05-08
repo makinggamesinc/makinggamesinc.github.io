@@ -14,8 +14,8 @@ Hot Pink: #EF7c8E;
 body {
   font: 20px Roboto, sans-serif;
   line-height: 1.8;
-  background-image: url("asanoha.png");
-  background-repeat: repeat;
+  /*background-image: url("asanoha.png");*/
+  /*background-repeat: repeat;*/
   color: #43464B;
 }
 
@@ -132,4 +132,9 @@ ol {
 }
 .code-comment-name {
 	color: gray;
+}
+
+pre.prettyprint, code.prettyprint {
+    font-size: 12pt; /* doesn't work */
+    /*background-color: #333; /* this works */*/
 }
